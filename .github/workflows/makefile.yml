@@ -29,7 +29,11 @@ jobs:
 
     - name: Install R dependencies
       run: |
-        Rscript -e "install.packages(c('tidyverse','hrbrthemes','cdcfluview'), dependencies = TRUE, repos='https://cloud.r-project.org')"
+        Rscript -e "install.packages(c('tidyverse','hrbrthemes','remotes'), dependencies = TRUE, repos='https://cloud.r-project.org')"
+
+    - name: Install CDCFluView
+      run: |
+      	   Rscript -e 'remotes::install_github("hrbrmstr/cdcfluview")'
 
     # Run the Makefile
     - name: Run Makefile
