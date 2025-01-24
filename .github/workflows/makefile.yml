@@ -32,6 +32,8 @@ jobs:
         Rscript -e "install.packages(c('tidyverse','hrbrthemes','remotes'), dependencies = TRUE, repos='https://cloud.r-project.org')"
 
     - name: Install CDCFluView
+      env:
+        GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
       run: |
         Rscript -e "remotes::install_github('hrbrmstr/cdcfluview')"
 
