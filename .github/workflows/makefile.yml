@@ -23,7 +23,7 @@ jobs:
     - name: Install Remotes
       run: |
         Rscript -e "install.packages('remotes', dependencies = TRUE, repos='https://cloud.r-project.org')"
-	 
+
     - name: Install CDCFluView
       env:
         GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
