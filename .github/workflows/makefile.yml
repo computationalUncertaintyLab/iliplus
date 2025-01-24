@@ -44,7 +44,6 @@ jobs:
         add: |
          clinical_and_public_lab_data__formatted.csv
 	 ilidata.csv
-           # Add the second CSV file
         message: "Add generated A.csv and B.csv from Makefile run"
         default_author: github_actions
         push: true
