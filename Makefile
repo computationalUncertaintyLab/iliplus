@@ -27,3 +27,6 @@ download_hosp_pct_data:
 	@echo "Downloading NHSNpct hosp data"
 	@$(VENV_PYTHON) download_percent_reported_hosps.py
 
+create_iliplus:
+	@echo "Create ILI+"
+	@$(VENV_PYTHON) produce_ili_plus_data.py
