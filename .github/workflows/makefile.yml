@@ -28,16 +28,16 @@ jobs:
         r-version: '4.3'  # Specify the R version you need
 
     - name: Install R dependencies
-      run: |
+       run: |
         Rscript -e "install.packages(c('tidyverse','hrbrthemes','remotes'), dependencies = TRUE, repos='https://cloud.r-project.org')"
 
     - name: Install CDCFluView
-      run: |
-      	   Rscript -e 'remotes::install_github("hrbrmstr/cdcfluview")'
+       run: |
+      	Rscript -e 'remotes::install_github("hrbrmstr/cdcfluview")'
 
     # Run the Makefile
     - name: Run Makefile
-      run: |
+       run: |
         source .venv/bin/activate
         make
 
