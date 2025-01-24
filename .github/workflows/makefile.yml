@@ -20,6 +20,10 @@ jobs:
       with:
         r-version: '4.3'  # Specify the R version you need
 
+    - name: Install Remotes
+      run: |
+         Rscript -e "install.packages('remotes', dependencies = TRUE, repos='https://cloud.r-project.org')"
+	 
     - name: Install CDCFluView
       env:
         GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
@@ -28,7 +32,7 @@ jobs:
 
     - name: Install R dependencies
       run: |
-        Rscript -e "install.packages(c('tidyverse','hrbrthemes','remotes'), dependencies = TRUE, repos='https://cloud.r-project.org')"
+        Rscript -e "install.packages(c('tidyverse','hrbrthemes'), dependencies = TRUE, repos='https://cloud.r-project.org')"
 
     # Set up Python environment
     - name: Set up Python
