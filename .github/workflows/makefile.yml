@@ -28,25 +28,27 @@ jobs:
         r-version: '4.3'  # Specify the R version you need
 
     - name: Install R dependencies
-       run: |
+      run: |
         Rscript -e "install.packages(c('tidyverse','hrbrthemes','remotes'), dependencies = TRUE, repos='https://cloud.r-project.org')"
 
     - name: Install CDCFluView
-       run: |
-      	Rscript -e 'remotes::install_github("hrbrmstr/cdcfluview")'
+      run: |
+        Rscript -e "remotes::install_github('hrbrmstr/cdcfluview')"
 
     # Run the Makefile
     - name: Run Makefile
-       run: |
+      run: |
         source .venv/bin/activate
         make
 
-   # Commit and push both CSV files
+    # Commit and push both CSV files
     - name: Commit changes
       uses: EndBug/add-and-commit@v7
       with:
         add: |
-         clinical_and_public_lab_data__formatted.csv ilidata.csv
-        message: "Add generated A.csv and B.csv from Makefile run"
+          clinical_and_public_lab_data__formatted.csv
+          ilidata.csv
+        message: "Add generated clinical_and_public_lab_data__formatted.csv and ilidata.csv from Makefile run"
         default_author: github_actions
         push: true
+ush: true
