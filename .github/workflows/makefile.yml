@@ -29,10 +29,22 @@ jobs:
 
     - name: Install R dependencies
       run: |
-        Rscript -e "install.packages(c('tidyverse','hrbrthemes','cdcfluview'), repos='https://cloud.r-project.org')"
+        Rscript -e "install.packages(c('tidyverse','hrbrthemes','cdcfluview'), dependencies = TRUE, repos='https://cloud.r-project.org')"
 
     # Run the Makefile
     - name: Run Makefile
       run: |
         source .venv/bin/activate
         make
+
+   # Commit and push both CSV files
+    - name: Commit changes
+      uses: EndBug/add-and-commit@v7
+      with:
+        add: |
+         clinical_and_public_lab_data__formatted.csv
+	 ilidata.csv
+           # Add the second CSV file
+        message: "Add generated A.csv and B.csv from Makefile run"
+        default_author: github_actions
+        push: true
