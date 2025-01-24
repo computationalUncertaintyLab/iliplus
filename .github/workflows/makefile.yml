@@ -51,4 +51,3 @@ jobs:
         message: "Add generated clinical_and_public_lab_data__formatted.csv and ilidata.csv from Makefile run"
         default_author: github_actions
         push: true
-ush: true
