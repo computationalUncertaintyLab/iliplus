@@ -26,4 +26,4 @@ if __name__ == "__main__":
     keep = ["location","location_name","season","year","week","epiweek","wili","ili_plus","ili_plus_a","ili_plus_b"] 
     ili_augmented = ili_augmented[keep]
 
-    ili_augmented.to_csv("ili_plus.csv",idnex=False)
+    ili_augmented.to_csv("ili_plus.csv",index=False)
