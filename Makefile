@@ -7,7 +7,7 @@ VENV_PYTHON := $(VENV_DIR)/bin/python -W ignore
 
 R ?= Rscript
 
-download_data: build_env download_ili download_clinical_data download_hosp_pct_data
+download_data: build_env download_ili download_clinical_data download_hosp_pct_data create_iliplus
 
 build_env:
 	@echo "build forecast environment"
