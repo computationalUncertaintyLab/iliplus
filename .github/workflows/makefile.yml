@@ -20,6 +20,10 @@ jobs:
       with:
         r-version: '4.3'  # Specify the R version you need
 
+    - name: Ubuntu dependencies
+      run: |
+        apt-get install -y libcurl4-openssl-dev
+
     - name: Install R dependencies
       run: |
         Rscript -e "install.packages(c('tidyverse','hrbrthemes'), dependencies = TRUE, repos='https://cloud.r-project.org')"
