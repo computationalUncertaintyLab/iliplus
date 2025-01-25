@@ -20,19 +20,36 @@ jobs:
       with:
         r-version: '4.3'  # Specify the R version you need
 
+    - name: Ubuntu dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libcurl4-openssl-dev
+        sudo apt-get install -y libudunits2-dev
+        sudo apt-get install -y libfontconfig1-dev
+        sudo apt-get install -y libharfbuzz-dev
+        sudo apt-get install -y libfribidi-dev
+        sudo apt-get install -y libcairo2-dev
+        sudo apt-get install -y libgit2-dev
+
+    - name: Ubuntu Gdal
+      run: |
+        sudo apt-add-repository ppa:ubuntugis/ubuntugis-unstable
+        sudo apt-get update
+        sudo apt-get install gdal-bin libgdal-dev
+        
+    - name: Install R dependencies
+      run: |
+        Rscript -e "install.packages(c('tidyverse','hrbrthemes'), dependencies = TRUE, repos='https://cloud.r-project.org')"
+
     - name: Install Remotes
       run: |
         Rscript -e "install.packages('remotes', dependencies = TRUE, repos='https://cloud.r-project.org')"
 
     - name: Install CDCFluView
       env:
-        GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
+        GITHUB_PAT: ${{ secrets.PAT }}
       run: |
         Rscript -e "remotes::install_github('hrbrmstr/cdcfluview')"
-
-    - name: Install R dependencies
-      run: |
-        Rscript -e "install.packages(c('tidyverse','hrbrthemes'), dependencies = TRUE, repos='https://cloud.r-project.org')"
 
     # Set up Python environment
     - name: Set up Python
