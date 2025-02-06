@@ -23,7 +23,7 @@ if __name__ == "__main__":
 
     ili_augmented = ili_augmented.rename(columns = {"region":"location_name"})
 
-    keep = ["location","location_name","season","year","week","epiweek","wili","ili_plus","ili_plus_a","ili_plus_b"] 
+    keep = ["location","location_name","season","year","week","epiweek","num_patients","wili","ili_plus","ili_plus_a","ili_plus_b"] 
     ili_augmented = ili_augmented[keep]
 
     ili_augmented.to_csv("ili_plus.csv",index=False)
